@@ -1,0 +1,41 @@
+$color-main : grey;
+$color-bg-header:gold;
+$color-bg-footer:darkgrey;
+
+
+
+body{
+    color:$color-main;
+    //font-size:12px;
+}
+
+  
+#header{
+    background-color: $color-bg-header;
+    font-size:3em;
+}
+
+#section{
+    ul{
+        li{
+            &.selected{
+                background-color:$color-bg-header;
+            }
+        }
+    }
+    
+    .panel-heading {
+        font-size:1.5em;
+    }
+}
+
+#footer{
+    background-color:$color-bg-footer;
+    height:50px;
+    line-height:50px;
+    color:white;
+    a,a:visited{
+        color:white;
+        text-transform:capitalize;
+    }
+}
