@@ -1,5 +1,12 @@
-Weather app
-===========
+Demo Weather app
+================
+Allow user to construct dashboards containing cities weather information collected with openweathermap API.
+
+
+Technologies
+============
+Backend : PHP, MySQL
+Frontend : HTML, CSS/SaSS, Twitter Bootstrap 3, AngularJS
 
 Purpose
 =======
