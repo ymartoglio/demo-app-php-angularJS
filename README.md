@@ -1,3 +1,6 @@
+Weather app
+===========
+
 Purpose
 =======
 Allow a unique user to manage dashboards. Each displays a collection of cities current weather.
