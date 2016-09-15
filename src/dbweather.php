@@ -8,11 +8,11 @@ define('DB_NAME',$ini['database']['name']);
 define('DB_USER',$ini['database']['user']);
 define('DB_PASS',$ini['database']['password']);
 
-/*
- * DB access, contain every method for querying
+/**
+ * DB access, contains every method for querying data 
  */
 class DBWeather{
-    
+
     private static $pdo = null;
 
     function __construct() {

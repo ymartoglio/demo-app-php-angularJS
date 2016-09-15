@@ -4,23 +4,23 @@ function __autoload($class_name) {
     include strtolower(str_replace('Controller','',$class_name)) . '.php';
 }
 /*
- * Provide controller method calls by Reflection
+ * Provide controller method called by "Reflection"
  */
 class RequestHandler{
     protected $controller = null;
     protected $method = null;
     protected $paramsType = INPUT_GET;
-    
+
     function __construct($paramsType = INPUT_GET){
         $this->paramsType = $paramsType;
         $this->extractControllerRequestParams();
     }
-    
+
     function __destruct() {
         $this->method     = null;
         $this->controller = null;
     }
-    
+
     /*
      * Call the requested method
      * @return bool | object | array
@@ -32,7 +32,7 @@ class RequestHandler{
             throw $e;
         }
     }
-    
+
     /*
      * Extract request inputs for Controller&Method instanciation
      */
@@ -48,27 +48,28 @@ class RequestHandler{
             throw $e;
         }
     }
-    
+
     /*
      * Extract request inputs for Method parameters
      */
     private function extractRequestParams(){
         $paramsAction = $this->method->getParameters();
         $paramsRequest = array();
-        
+
         foreach ($paramsAction as $param) {
             $reqGetParam = filter_input($this->paramsType,$param->getName());
             if($reqGetParam != null){
                 $paramsRequest[] = $reqGetParam;
             }
         }
-        
+
         return $paramsRequest;
     }
-    
-    /*
+
+    /**
      * Transform call_web_service to CallWebService
-     * @return string 
+     * @param $name - string
+     * @return string
      */
     private function normalizeAsCamelCase($name){
         if(PHP_MAJOR_VERSION >= 5 && PHP_MINOR_VERSION >= 5 && PHP_RELEASE_VERSION >= 16){
@@ -78,4 +79,3 @@ class RequestHandler{
         }
     }
 }
-

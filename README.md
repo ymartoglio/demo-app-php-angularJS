@@ -33,6 +33,7 @@ Virtual host (apache2)
 ----------------------
 
 Create a virtualhost in "/etc/apache2/sites-available/weather.conf" with :
+```
 <VirtualHost *:80>
     AddType images/png .png
     ServerName weather.localhost
@@ -42,18 +43,21 @@ Create a virtualhost in "/etc/apache2/sites-available/weather.conf" with :
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+```
 
 Enable the virtual host
+```
 $ a2ensite weather.conf
-
+```
 
 
 Create database structure
 -------------------------
 Create the database and the tables structure
+```
 $ cd /var/www/weather
 $ mysql -u [user] -p[password] < data/weather-structure.sql
-
+```
 
 
 
@@ -63,8 +67,11 @@ Change DB connection informations in /src/config.ini
 
 Import OpenWeatherMap cities datas
 ----------------------------------
+```
 $ cd /var/www/weather
 $ php install.php
+```
+
 
 200.000+ cities to import (can be quite long).
 The script display a counter.
@@ -88,12 +95,13 @@ GET params {
 The ws service call will response by invoking : NameController->methodName($paramName)
 
 The response is packaged by the following JSON payload :
-
+```JSON
 {
     "success"   : bool,
     "errorCode" : int,
     "data"      : bool | object
 }
+```
 
 Controllers
 -----------
