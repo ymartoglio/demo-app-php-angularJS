@@ -19,9 +19,11 @@ ex : /var/www/weather
 
 Modify "web/js/app.js" parameters variable :
 
+```javascript
 var OWM_KEY = "2de143494c0b295cca9337e1e96b00e0";
 var WS_URL = "http://weather.localhost/ws.php";
-var GMAP_API_KEY = 'AIzaSyD6QKQYfUJ8EbBYI1ZrdKQf8ka_djBei3Y';
+var GMAP_API_KEY = '';
+```
 
 OWM_KEY must be a valid OpenWeatherMap key
 
