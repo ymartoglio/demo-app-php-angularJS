@@ -1,7 +1,8 @@
 <?php
 include_once "dbweather.php";
 
-/*
+/**
+ * Class CityModel
  * Model for city data
  */
 class CityModel{
@@ -12,9 +13,9 @@ class CityModel{
     public $latitude;
 }
 
-/*
+/**
+ * Class CityController
  * City Controller exposes method to get and search cities
- * 
  */
 class CityController{    
     function __construct(){}
@@ -46,6 +47,5 @@ class CityController{
     public function StartWith($word){
         return DBWeather::cityStartWith($word);
     }
-    
 }
 

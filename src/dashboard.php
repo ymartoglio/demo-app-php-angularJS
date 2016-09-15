@@ -1,7 +1,8 @@
 <?php
 include_once 'city.php';
 
-/*
+/**
+ * Class DashboardModel
  * Model for dashboard data
  */
 class DashboardModel{
@@ -9,9 +10,9 @@ class DashboardModel{
     public $name;
 }
 
-/*
+/**
+ * Class DashboardController
  * Dashboard Controller exposes method to get, create, delete and populate (with city) dashboard
- *
  */
 class DashboardController{
 

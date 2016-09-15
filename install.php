@@ -7,6 +7,10 @@ $jsonCities = explode(PHP_EOL, $fCities);
 
 $countCities = count($jsonCities);
 
+
+/**
+ * Loop through the cities and insert each in the DB
+ */
 for($i = 0; $i < $countCities ; $i++){
     if(trim($jsonCities[$i]) != ""){
         $owmCity = json_decode($jsonCities[$i]);

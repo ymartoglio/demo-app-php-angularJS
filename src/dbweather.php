@@ -8,18 +8,27 @@ define('DB_NAME',$ini['database']['name']);
 define('DB_USER',$ini['database']['user']);
 define('DB_PASS',$ini['database']['password']);
 
+
 /**
- * DB access, contains every method for querying data 
+ * Class DBWeather
+ * Simple DB access, contains every method for querying data
+ * Data access layer
  */
 class DBWeather{
 
     private static $pdo = null;
 
+    /**
+     * DBWeather constructor. Not allowed because all methods are statics
+     * @throws Exception
+     */
     function __construct() {
         throw new Exception("Static Access : DBWeather::method");
     }
 
-
+    /**
+     * Helper method made for opening a PDO connection and initialize the $pdo descriptor
+     */
     private static function connect(){
         DBWeather::$pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME,
                             DB_USER,
@@ -28,10 +37,22 @@ class DBWeather{
         DBWeather::$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ );
     }
 
+    /**
+     * Helper method, closes the connection by setting the $pdo descriptor to null
+     */
     private static function close(){
         DBWeather::$pdo = null;
     }
 
+    /**
+     * Helper method performing the '$sqlQuery' with '$queryParams'.
+     * If '$fetchClassModel' is given, the method return an instance of the model (or an array of models)
+     * @param $sqlQuery
+     * @param null $queryParams
+     * @param null $fetchClassModel
+     * @return mixed
+     * @throws Exception
+     */
 	private static function execute($sqlQuery,$queryParams = null,$fetchClassModel = null){
 		try{
 			DBWeather::connect();

@@ -1,10 +1,16 @@
 <?php
-
+/**
+ * Magic function called when an unknown class is instanciated
+ * @param $class_name
+ */
 function __autoload($class_name) {
     include strtolower(str_replace('Controller','',$class_name)) . '.php';
 }
-/*
+
+/**
+ * Class RequestHandler
  * Provide controller method called by "Reflection"
+ * See PHP documentation : http://php.net/manual/fr/book.reflection.php
  */
 class RequestHandler{
     protected $controller = null;
@@ -21,23 +27,25 @@ class RequestHandler{
         $this->controller = null;
     }
 
-    /*
+    /**
      * Call the requested method
-     * @return bool | object | array
+     * @return mixed
+     * @throws ReflectionException
      */
     public function perform(){
-        try{
+        try {
             return $this->method->invokeArgs($this->controller->newInstance(),$this->extractRequestParams());
         } catch(ReflectionException $e){
             throw $e;
         }
     }
 
-    /*
+    /**
      * Extract request inputs for Controller&Method instanciation
+     * @throws ReflectionException
      */
     private function extractControllerRequestParams(){
-        try{
+        try {
             $controllerName   = filter_input($this->paramsType,'controller');
             $actionName       = filter_input($this->paramsType,'action');
             $controllerClass  = $this->normalizeAsCamelCase($controllerName).'Controller';
@@ -49,8 +57,9 @@ class RequestHandler{
         }
     }
 
-    /*
+    /**
      * Extract request inputs for Method parameters
+     * @return array
      */
     private function extractRequestParams(){
         $paramsAction = $this->method->getParameters();
@@ -62,7 +71,6 @@ class RequestHandler{
                 $paramsRequest[] = $reqGetParam;
             }
         }
-
         return $paramsRequest;
     }
 

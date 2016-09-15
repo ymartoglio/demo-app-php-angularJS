@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" ng-app="WeatherApp">
     <head>
         <meta charset="utf-8">
@@ -10,8 +10,8 @@
         <script src="js/vendor/jquery.min.js" type="text/javascript"></script>
         <script src="js/tools.js" type="text/javascript"></script>
         <script src="js/app.js" type="text/javascript"></script>
-	<script src="js/service.js" type="text/javascript"></script>
-	<script src="js/controller.js" type="text/javascript"></script>
+	    <script src="js/service.js" type="text/javascript"></script>
+	    <script src="js/controller.js" type="text/javascript"></script>
         <link href="css/vendor/weather-icon/css/weather-icons.min.css" rel="stylesheet" type="text/css"/>
     </head>
 
@@ -25,9 +25,7 @@
         </div>
         <div  class="fluid-container">
             <div class="container" id="section">
-                <div ng-view="">
-
-                </div>
+                <div ng-view=""></div>
             </div>
         </div>
         <div id="footer" class="fluid-container">

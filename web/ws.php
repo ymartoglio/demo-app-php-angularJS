@@ -3,6 +3,9 @@ include_once '../src/request_handler.php';
 
 $errorCode = 0;
 
+/**
+ * Give input type to 'RequestHandler' witch perform the action given in the request.
+ */
 try{
     $requestHandler = new RequestHandler(INPUT_GET);
     $responseData = $requestHandler->perform();
