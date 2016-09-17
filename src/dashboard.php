@@ -1,5 +1,5 @@
 <?php
-include_once 'city.php';
+include_once '../city.php';
 
 /**
  * Class DashboardModel
